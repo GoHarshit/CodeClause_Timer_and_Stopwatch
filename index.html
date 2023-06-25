@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <ul class="nav nav-pills nav-fill justify-content-center">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="index.html">⏱ Stopwatch</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="timer.html">⏲ Timer</a>
+                </li>
+              </ul>
+        </div>
+        <div class="center_box">
+            <h1 class="watch" id="displayTime">00 d : 00 hrs : 00 min : 00 sec</h1>
+            <div class="buttons">
+                <img class="button" onclick="stop()" src="images/stop1.webp">
+                <img class="button" onclick="start()" src="images/play1.jpg">
+                <img class="button" onclick="reset()" src="images/restart1.jpeg">
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

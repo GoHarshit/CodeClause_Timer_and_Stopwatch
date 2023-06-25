@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <ul class="nav nav-pills nav-fill justify-content-center">
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="index.html">⏱ Stopwatch</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="timer.html">⏲ Timer</a>
+                </li>
+              </ul>
+        </div>
+        <div class="center_box">
+            <h1 class="watch" id="displayTime">00 d : 00 hrs : 00 min : 00 sec</h1>
+            <h1 class="ghadi" id="display">
+                <input type="number" class="time" id="inputDays" placeholder="Days">
+                <input type="number" class="time" id="inputHours" placeholder="Hours"> 
+                <input type="number" class="time" id="inputMinutes" placeholder="Minutes">
+                <input type="number" class="time" id="inputSeconds" placeholder="Seconds"> 
+            </h1>
+            <div class="buttons">
+                <img class="button" onclick="stop()" src="images/stop1.webp">
+                <img class="button" onclick="start()" src="images/play1.jpg">
+                <img class="button" onclick="reset()" src="images/restart1.jpeg">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        var timerElement=document.getElementById("displayTime");
+        let timer=null;
+
+       /* var intervalId;
+        var startTime;*/
+        var elapsedTime = 0;
+        var inputDays = document.getElementById("inputDays");
+        var inputHours = document.getElementById("inputHours");
+        var inputMinutes = document.getElementById("inputMinutes");
+        var inputSeconds = document.getElementById("inputSeconds");
+        var seconds; 
+        var days;
+        var hours;
+        var minutes;
+
+        timerElement.innerHTML="00 d : 00 hr : 00 min : 00 sec";
+        function Timer(){
+                
+            seconds--;
+                if(seconds < 0){
+                    minutes--;
+                    seconds = 59;
+                    if(minutes<0){
+                        hours--;
+                        minutes=59;
+                        if(hours<0){
+                            days--;
+                            hours=23;
+                        }
+                    }
+                }
+                console.log(seconds);
+                let d=days<10 ? "0"+days:days;
+                let h=hours<10 ? "0"+hours: hours;
+                let m=minutes<10 ? "0"+minutes: minutes;
+                let s=seconds<10 ? "0"+seconds: seconds;
+
+                if(seconds == 0 && minutes == 0 &&hours==0 && days==0){
+                    alert("DONE!");
+                    location.reload();
+                }
+                timerElement.innerHTML = d+" d : "+h +" hr : "+ m+" min : "+s+" sec";
+            }
+
+            function start(){
+                seconds = parseInt(inputSeconds.value) || 0;
+                days=parseInt(inputDays.value) || 0;
+                hours=parseInt(inputHours.value) || 0;
+                minutes = parseInt(inputMinutes.value) || 0;
+
+                
+                console.log(seconds);
+                console.log(days);
+                console.log(minutes);
+                console.log(hours);
+                if(timer!=null){
+                    clearInterval(timer);
+                }
+                timer=setInterval(Timer,1000);
+                }
+                /*function start(){
+                    var days=parseInt(inputDays.value) || 0;
+                    var hours=parseInt(inputHours.value) || 0;
+                    var minutes = parseInt(inputMinutes.value) || 0;
+                    var seconds = parseInt(inputSeconds.value) || 0;
+                    var duration = days*86400+hours*60*60+minutes * 60 + seconds;
+
+                    if (duration <= 0) {
+                        alert("Please enter a valid duration.");
+                        return;
+                    }
+
+                    clearInterval(intervalId);
+                    startTime = new Date().getTime();
+                    intervalId = setInterval(updateTimer, 1000);
+                }
+                function updateTimer() {
+                    var currentTime = new Date().getTime();
+                    var deltaTime = currentTime - startTime + elapsedTime;
+                    var totalSeconds = Math.floor(deltaTime / 1000);
+                    var days=Math.floor(totalSeconds / 86400);
+                    var hours = Math.floor((totalSeconds %86400)/ 3600);
+                    var minutes = Math.floor((totalSeconds % 3600) / 60);
+                    var seconds = totalSeconds % 60;
+
+                    timerElement.textContent = formatTime(days) + " d : " +formatTime(hours) + " hrs : " + formatTime(minutes) + " min : " + formatTime(seconds)+ " sec";
+
+                    if (hours === 0 && minutes === 0 && seconds === 0) {
+                        stop();
+                    }
+                    }
+
+                    function formatTime(time) {
+                    return time < 10 ? "0" + time : time;
+                    }*/
+            function stop(){
+                clearInterval(timer);
+                }
+            function reset(){
+                clearInterval(timer);
+                alert("Reset");
+                location.reload();
+                
+            }
+
+    </script>
+</body>
+</html>
